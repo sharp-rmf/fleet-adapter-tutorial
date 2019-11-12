@@ -32,9 +32,9 @@ This script will only work for ROS2 Dashing and ROS Melodic. If this fails, foll
 ## Testing the Bridge
 In the following, a ROS1 terminal is a terminal sourced with ROS1 and sourced with the corresponding `ros1` workspace in the tutorial, vice versa for ROS2.
 
-* In one ROS1 terminal (1): `roslaunch mir_fleet_manager fleet_manager.launch` to run the fleet manager simulation. **Remember** to start the physics in the simulation after everything is online.
-* In a clean terminal, run (2): `bridge_tools/run_bridge.sh` from the `fleet-adapter-tutorial` root folder to run the bridging.
-* From another ROS2 terminal (3), publish a nav goal as a ROS2 PoseStamped message:
+* In one **ROS1** terminal (1): `roslaunch mir_fleet_manager fleet_manager.launch` to run the fleet manager simulation. **Remember** to start the physics in the simulation after everything is online.
+* In a **clean** terminal, run (2): `bridge_tools/run_bridge.sh` from the `fleet-adapter-tutorial` root folder to run the bridging.
+* From another **ROS2** terminal (3), publish a nav goal as a ROS2 PoseStamped message:
 ```
 cd ros2 && colcon build --packages-select simple_move_fleet_py
 source install/setup.bash

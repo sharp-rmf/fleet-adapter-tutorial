@@ -26,7 +26,7 @@ def main(args=None):
         msg.header.stamp = node.get_clock().now().to_msg()
         msg.header.frame_id = "map"
 
-        msg.pose.position.x = 10.0
+        msg.pose.position.x = 17.0
         msg.pose.position.y = 10.0
         msg.pose.position.z = 0.0
         msg.pose.orientation.w = 1.0
