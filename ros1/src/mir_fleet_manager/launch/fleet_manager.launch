@@ -24,6 +24,6 @@
     <node type="rviz" name="rviz" pkg="rviz" args="-d $(find mir_navigation)/rviz/fleet_navigation.rviz" />
 
     <!-- Launch Fleet Manager -->
-    <node type="fleet_manager" name="fleet_manager" pkg="mir_fleet_manager"/>
+    <node type="fleet_manager" name="fleet_manager" pkg="mir_fleet_manager" output="screen"/>
 
 </launch>
