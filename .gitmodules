@@ -7,3 +7,9 @@
 [submodule "ros1/src/soss-ros1"]
 	path = ros1/src/soss-ros1
 	url = ssh://git@github.com/osrf/soss-ros1
+[submodule "bridge_tools/ros2/src/soss"]
+	path = bridge_tools/ros2/src/soss
+	url = ssh://git@github.com/osrf/soss_v2
+[submodule "bridge_tools/ros1/src/soss-ros1"]
+	path = bridge_tools/ros1/src/soss-ros1
+	url = ssh://git@github.com/osrf/soss-ros1

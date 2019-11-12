@@ -15,9 +15,9 @@ We should now see an interface very simlar to that in `master` branch. However, 
 
 ## Detail
 The important topics for the fleet manager are:
-*`/mir_fleet_manager/waypoint_goal` : Publish a `PoseStamped` message here to queue a waypoint for the robot.
-*`/mir_fleet_manager/reset`: Resets the waypoint queue. I used a PoseStamped message here in order to make use of the existing rviz `Publish Point` button.
-*`/mir_fleet_manager/waypoints`: A `PoseArray` of all the waypoints in the queue. Used for visualization.
+* `/mir_fleet_manager/waypoint_goal` : Publish a `PoseStamped` message here to queue a waypoint for the robot.
+* `/mir_fleet_manager/reset`: Resets the waypoint queue. I used a PoseStamped message here in order to make use of the existing rviz `Publish Point` button.
+* `/mir_fleet_manager/waypoints`: A `PoseArray` of all the waypoints in the queue. Used for visualization.
 
 We can consider the fleet manager to be a high level interface to the robot itself, where we consider destinations in terms of "Waypoints" rather than the specific trajectories the robot will take. This, as we will see, will integrate nicely into the fleet adapters and RMF.
 
