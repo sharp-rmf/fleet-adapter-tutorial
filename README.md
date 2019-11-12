@@ -36,11 +36,9 @@ In the following, a ROS1 terminal is a terminal sourced with ROS1 and sourced wi
 * In a clean terminal, run (2): `bridge_tools/run_bridge.sh` from the `fleet-adapter-tutorial` root folder to run the bridging.
 * From another ROS2 terminal (3), publish a nav goal as a ROS2 PoseStamped message:
 ```
-ros2 topic pub -r 10 /mir_fleet_manager/waypoint_goal geometry_msgs/PoseStamped '
-{header: {stamp: {sec: 0, nanosec: 0}, frame_id: "map"}, 
-pose: {position: {x: 17.0, y: 10.0, z: 0.0}, 
-orientation: {w: 1.0}}}'
+cd ros2 && colcon build --packages-select simple_move_fleet_py
+source install/setup.bash
+ros2 run simple_move_fleet_py move_fleet
 ```
-**This is not working perfectly fine yet, to debug with experts!**
 
 The fleet manager simulation should receive the ROS2 nav goals as if it was published in ROS1. 
