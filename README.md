@@ -1,5 +1,5 @@
 # Waypoint Mapping
-`git clone --recursive git@github.com:cnboonhan94/fleet-adapter-tutorial.git -b 02-Waypoint-Mapping`
+`git clone --recursive git@github.com:cnboonhan94/fleet-adapter-tutorial.git -b 02-waypoint-mapping`
 
 We initially assume that the vendor setup comes with a complete navigation stack. This includes a navigation map. We can find the map for this example in `ros1/src/mir_robot/mir_gazebo/maps/maze.png`. The next step would be to annotate this map with waypoints and lanes, which represent the "traffic roads" on which our robot(s) will operate. 
 
