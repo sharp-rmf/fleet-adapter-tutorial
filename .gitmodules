@@ -4,9 +4,9 @@
 [submodule "external/src/traffic-editor"]
 	path = external/src/traffic-editor
 	url = git@github.com:osrf/traffic-editor.git
-[submodule "ros2/src/rmf_core"]
-	path = ros2/src/rmf_core
-	url = git@github.com:cnboonhan94/rmf_core.git
 [submodule "ros2/src/rmf_map_to_graph"]
 	path = ros2/src/rmf_map_to_graph
 	url = git@github.com:cnboonhan94/rmf_map_to_graph.git
+[submodule "ros2/src/rmf_core"]
+	path = ros2/src/rmf_core
+	url = git@github.com:cnboonhan94/rmf_core.git
