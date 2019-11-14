@@ -12,3 +12,9 @@ Now, the final part of the puzzle is the Fleet Adapter. The fleet adapter has th
 * (There is more stuff, to be added when implemented )
 
 As a result, a fleet adapter is likely to be highly customized to each type of fleet that exists and allows bridging of various systems info a unified world representation. 
+
+```
+ros2 run mir_rmf_fleet_adapter start_fleet_adapter -f mir -g ../maps/maze-complete/nav_0.yaml
+
+ros2 topic pub /mir_fleet_adapter/movrobot std_msgs/String "data: A"
+```

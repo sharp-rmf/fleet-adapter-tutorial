@@ -92,14 +92,41 @@ void FleetAdapterNode::start(Data _data)
 
   // Create subscribers and Publishers to interface with external system
   move_robot_sub = create_subscription<MiRTaskRequest>(
-      "move_robot",
+      "mir_fleet_adapter/move_robot",
       rclcpp::SystemDefaultsQoS(),
       [&](MiRTaskRequest::UniquePtr msg) {
-        // this->move_robot(std::move(msg));
+        this->move_robot(std::move(msg));
       });
 
   move_robot_retry = create_publisher<MiRTaskRequest>(
-      "move_robot");
+      "mir_fleet_adapter/move_robot");
+}
+
+void FleetAdapterNode::move_robot(MiRTaskRequest::UniquePtr msg)
+{
+  // Here we process commands to move the robot. In our very minimal example,
+  // we assume that the fleet adapter will always receive a relevant string,
+  // which is a String which specifies the name of the waypoint to go to.
+  RCLCPP_INFO(get_logger(), "Received a Mission to:" + msg->data);
+  const auto start_it = data->waypoint_keys.find(msg->data);
+  if (start_it == data->waypoint_keys.end())
+  {
+    RCLCPP_ERROR(
+        get_logger(),
+        "Unrecognized goal waypoint requested: " + msg->data);
+    return;
+  }
+
+  // If the waypoint is found, we need to provide a trajectory for the verification with
+  // the Schedule. We use the Planner tool in RMF for this.
+  const auto default_options = rmf_traffic::agv::Planner::Options(data->mirror.viewer());
+  rmf_traffic::agv::Planner planner{
+      rmf_traffic::agv::Planner::Configuration{data->graph, data->traits},
+      default_options};
+  const rmf_traffic::Time start_time = std::chrono::steady_clock::now();
+  auto plan = planner.plan(
+          rmf_traffic::agv::Planner::Start(start_time, 3, 0.0),
+          rmf_traffic::agv::Planner::Goal(3, 0.0));
 }
 
 //==============================================================================

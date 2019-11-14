@@ -105,9 +105,11 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // RCLCPP_INFO(
-    //     fleet_adapter_node->get_logger(),
-    //     "Beginning loop");
+    RCLCPP_INFO(
+        fleet_adapter_node->get_logger(),
+        "Beginning loop");
+        
+    rclcpp::spin(fleet_adapter_node);
 
     // if (!has_start)
     // {
