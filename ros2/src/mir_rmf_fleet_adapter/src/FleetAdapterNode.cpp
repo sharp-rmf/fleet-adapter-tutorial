@@ -1,11 +1,11 @@
-#include "FleetAdapterNode.hpp"
+#include <mir_rmf_fleet_adapter/FleetAdapterNode.hpp>
 
 #include <rmf_traffic_ros2/StandardNames.hpp>
 #include <rmf_traffic_ros2/Trajectory.hpp>
 #include <rmf_traffic/agv/Planner.hpp>
 
 #include <rclcpp/rclcpp.hpp>
-#include "ParseGraph.hpp"
+#include <mir_rmf_fleet_adapter/ParseGraph.hpp>
 
 namespace mir_rmf_fleet_adapter
 {
@@ -90,11 +90,12 @@ void FleetAdapterNode::start(Data _data)
   data = std::make_unique<Data>(std::move(_data));
   data->mirror.update();
 
+  // Create subscribers and Publishers to interface with external system
   move_robot_sub = create_subscription<MiRTaskRequest>(
       "move_robot",
       rclcpp::SystemDefaultsQoS(),
       [&](MiRTaskRequest::UniquePtr msg) {
-        this->move_robot(std::move(msg));
+        // this->move_robot(std::move(msg));
       });
 
   move_robot_retry = create_publisher<MiRTaskRequest>(

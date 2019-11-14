@@ -15,7 +15,7 @@
  *
 */
 
-#include "ParseGraph.hpp"
+#include <mir_rmf_fleet_adapter/ParseGraph.hpp>
 
 #include <yaml-cpp/yaml.h>
 

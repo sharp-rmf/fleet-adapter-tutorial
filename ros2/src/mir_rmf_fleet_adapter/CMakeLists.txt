@@ -19,15 +19,42 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rmf_traffic REQUIRED)
+find_package(rmf_traffic_ros2 REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
+find_package(yaml-cpp REQUIRED)
 
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/MiRTaskRequest.msg"
-  DEPENDENCIES builtin_interfaces geometry_msgs
-  ADD_LINTER_TESTS
+include(GNUInstallDirs)
+
+add_executable(start_fleet_adapter src/start_fleet_adapter.cpp src/FleetAdapterNode.cpp src/ParseGraph.cpp)
+
+target_link_libraries(start_fleet_adapter
+  PUBLIC
+    rmf_traffic::rmf_traffic
+    rmf_traffic_ros2::rmf_traffic_ros2
+    yaml-cpp
+    ${rclcpp_LIBRARIES}
 )
 
-ament_export_dependencies(rosidl_default_runtime)
+target_include_directories(start_fleet_adapter
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+    ${rclcpp_INCLUDE_DIRS}
+)
+
+install(
+  DIRECTORY include/
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+install(
+  TARGETS start_fleet_adapter
+  EXPORT  start_fleet_adapter
+  # RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
 
 ament_package()

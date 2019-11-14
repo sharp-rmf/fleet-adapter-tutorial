@@ -3,10 +3,10 @@
 
 #include <rmf_traffic_ros2/schedule/MirrorManager.hpp>
 
-#include <msg/mi_r_task_request.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 
 #include <rmf_traffic_msgs/srv/submit_trajectory.hpp>
+#include <std_msgs/msg/string.hpp>
 
 #include <rmf_traffic/agv/Graph.hpp>
 #include <rmf_traffic/agv/Planner.hpp>
@@ -56,11 +56,11 @@ private:
   std::unique_ptr<Data> data;
 
   // These aliases are used by some external system to send requests of action to the fleet adapter (TODO: Migrate these to external node)
-  using MiRTaskRequest = mir_rmf_fleet_adapter::msg::MiRTaskRequest;
-  using MiRTaskRequest = rclcpp::Subscription<MiRTaskRequest>;
+  using MiRTaskRequest = std_msgs::msg::String;
+  using MiRTaskRequestSub = rclcpp::Subscription<MiRTaskRequest>;
   using MirTaskRequestRetryPub = rclcpp::Publisher<MiRTaskRequest>; // Used by this adapter implementation to trigger a local task re-request 
 
-  MiRTaskRequest::SharedPtr move_robot_sub;
+  MiRTaskRequestSub::SharedPtr move_robot_sub;
   MirTaskRequestRetryPub::SharedPtr move_robot_retry;
 
   void move_robot(MiRTaskRequest::UniquePtr msg);
