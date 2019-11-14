@@ -19,7 +19,7 @@
 
 #include <yaml-cpp/yaml.h>
 
-namespace proto_fleet_adapter {
+namespace mir_rmf_fleet_adapter {
 //==============================================================================
 bool parse_graph(
     const std::string& graph_file,

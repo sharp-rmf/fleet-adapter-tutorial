@@ -25,7 +25,7 @@
 
 #include <rclcpp/node.hpp>
 
-namespace proto_fleet_adapter {
+namespace mir_rmf_fleet_adapter {
 
 //==============================================================================
 bool parse_graph(
