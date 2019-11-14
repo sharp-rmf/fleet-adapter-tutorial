@@ -6,7 +6,7 @@ This chapter introduces the ROS2 RMF Schedule Node. This is an implementation of
 ## Building the Schedule Node
 * Source your ROS2 Distro
 * `cd ros2`
-* `colcon build --packages-up-to rmf_traffic_schedule`
+* `colcon build --packages-up-to rmf_traffic_ros2`
 * `source install/setup.bash`
 * `ros2 run rmf_traffic_schedule run_schedule`
 
