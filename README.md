@@ -49,3 +49,10 @@ Use `add vertex` to add more vertices within the map boundaries. Then use `add l
 
 ## Output
 The result of all this should be a populated `maze.yaml` file. This is different from the file in `mir_gazebo`. This file will be used to create RMF Graphs.
+
+## Final Step
+Finally, we process the output yaml file, which is too descriptive, into a reduced form for navigation purposes in RMF.
+```
+cd maps/maze-complete
+../../external/src/traffic-editor/generators/nav_generator.py maze.yaml nav
+```
