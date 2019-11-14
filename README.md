@@ -1,4 +1,4 @@
-# RMF Schedule ROS2 Node
+# RMF Schedule ROS2 Node ( Currently doing work, might break stuff )
 `git clone --recursive git@github.com:cnboonhan94/fleet-adapter-tutorial.git -b 04-schedule-node`
 
 This chapter introduces the ROS2 RMF Schedule Node. This is an implementation of the RMF Schedule as described in [03-rmf-core-overview](https://github.com/cnboonhan94/fleet-adapter-tutorial/tree/03-rmf-core-overview). For this chapter, the Schedule will be empty. Following this, a fleet adapter ( implemented uniquely for each individual fleet ) will use the Schedule to determine feasible trajectories. It will then instruct the **fleet manager** on the high level path to take, and update the **Schedule** through ROS2 *service calls*.
