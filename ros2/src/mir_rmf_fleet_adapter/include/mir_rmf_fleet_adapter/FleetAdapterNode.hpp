@@ -60,8 +60,8 @@ private:
   using MiRTaskRequest = rclcpp::Subscription<MiRTaskRequest>;
   using MirTaskRequestRetryPub = rclcpp::Publisher<MiRTaskRequest>; // Used by this adapter implementation to trigger a local task re-request 
 
-  MiRTaskRequest::SharedPtr test_task_request_sub;
-  MirTaskRequestRetryPub::SharedPtr test_task_request_retry;
+  MiRTaskRequest::SharedPtr move_robot_sub;
+  MirTaskRequestRetryPub::SharedPtr move_robot_retry;
 
   void move_robot(MiRTaskRequest::UniquePtr msg);
 
@@ -76,6 +76,6 @@ private:
 
 };
 
-} // namespace proto_fleet_adapter
+} // namespace mir_rmf_fleet_adapter
 
-#endif // SRC__RMF_TRAFFIC_ROS2__PROTO_FLEET_ADAPTER__FLEETADAPTERNODE_HPP
+#endif // SRC__MIR_RMF_FLEET_ADAPTER__FLEETADAPTERNODE_HPP

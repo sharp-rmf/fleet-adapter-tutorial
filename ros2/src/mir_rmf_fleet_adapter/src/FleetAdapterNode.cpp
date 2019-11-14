@@ -71,4 +71,35 @@ std::shared_ptr<FleetAdapterNode> FleetAdapterNode::make(
 }
 
 //==============================================================================
+FleetAdapterNode::FleetAdapterNode(std::string _fleet_name)
+    : Node(_fleet_name + "_fleet_adapter"),
+      fleet_name(std::move(_fleet_name))
+{
+  // Do nothing
+
+  // NOTE(MXG): We need to initialize an empty node so we can spin up the
+  // MirrorManagerFuture into a full MirrorManager. But also we don't want this
+  // node to do anything until all its data fields are finalized, so this
+  // constructor is more like a formality than a real constructor.
+}
+
+void FleetAdapterNode::start(Data _data)
+{
+  // We create a Data instance ( encapsulating information after full initialization )
+  // We then trigger a local cache update
+  data = std::make_unique<Data>(std::move(_data));
+  data->mirror.update();
+
+  move_robot_sub = create_subscription<MiRTaskRequest>(
+      "move_robot",
+      rclcpp::SystemDefaultsQoS(),
+      [&](MiRTaskRequest::UniquePtr msg) {
+        this->move_robot(std::move(msg));
+      });
+
+  move_robot_retry = create_publisher<MiRTaskRequest>(
+      "move_robot");
+}
+
+//==============================================================================
 } // namespace mir_rmf_fleet_adapter
