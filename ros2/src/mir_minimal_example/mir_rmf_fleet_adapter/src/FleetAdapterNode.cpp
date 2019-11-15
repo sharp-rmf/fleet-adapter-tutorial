@@ -111,8 +111,9 @@ void FleetAdapterNode::start(Data _data)
       rclcpp::SystemDefaultsQoS(),
       [&](geometry_msgs::msg::PoseStamped::SharedPtr msg) {
         data->pose = *msg;
-        data->pose.pose.position.x += 10; // Transformation to align the two maps
+        data->pose.pose.position.x += 10; // Transformation to align the vendor map with rmf map
         data->pose.pose.position.y += 10;
+        data->pose.pose.position.y = -data->pose.pose.position.y;
       });
   
   // Publisher for the fleet manager
@@ -256,8 +257,8 @@ void FleetAdapterNode::handle_move_fleet(std::vector<rmf_traffic::agv::Plan::Way
   {
     geometry_msgs::msg::PoseStamped goal;
     const auto p = wp.position();
-    goal.pose.position.x = p[0] - 10; // Correcting for transformation between maps again
-    goal.pose.position.y = p[1] - 10;
+    goal.pose.position.x = p[0]; 
+    goal.pose.position.y = p[1] + 20;
     goal.pose.orientation.w = p[2];
     goal.header.stamp = this->now(); // This is wrong, need to find out how to convert rmf_traffic::Time to ROS2 message
     goal.header.frame_id = "map";
