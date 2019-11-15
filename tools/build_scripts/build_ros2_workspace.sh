@@ -10,7 +10,7 @@ if [[ $1 == clear ]] ; then
 fi
 
 source $ROS2_SETUP
-cd ros1
+cd ros2
 colcon build
 source install/setup.bash
 cd $PROJECT_HOME
