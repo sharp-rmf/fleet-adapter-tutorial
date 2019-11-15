@@ -15,8 +15,8 @@
  *
 */
 
-#ifndef SRC__RMF_TRAFFIC_ROS2__PROTO_FLEET_ADAPTER__PARSEGRAPH_HPP
-#define SRC__RMF_TRAFFIC_ROS2__PROTO_FLEET_ADAPTER__PARSEGRAPH_HPP
+#ifndef SRC__MIR_RMF_FLEET_ADAPTER__PARSE_GRAPH_HPP
+#define SRC__MIR_RMF_FLEET_ADAPTER__PARSE_GRAPH_HPP
 
 #include <rmf_traffic/agv/Graph.hpp>
 #include <rmf_traffic/agv/VehicleTraits.hpp>
