@@ -1,6 +1,0 @@
-building_name: maze
-levels:
-  L1:
-    drawing:
-      filename: maps/maze-new/maze.png
-      offset: [0, 0]
