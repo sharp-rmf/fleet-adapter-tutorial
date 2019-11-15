@@ -10,3 +10,9 @@
 [submodule "ros1/src/mir_minimal_example/mir_robot"]
 	path = ros1/src/mir_minimal_example/mir_robot
 	url = git@github.com:dfki-ric/mir_robot.git
+[submodule "external/soss-bridging/ros2/soss"]
+	path = external/soss-bridging/ros2/soss
+	url = git@github.com:osrf/soss.git
+[submodule "external/soss-bridging/ros1/soss-ros1"]
+	path = external/soss-bridging/ros1/soss-ros1
+	url = git@github.com:osrf/soss-ros1.git

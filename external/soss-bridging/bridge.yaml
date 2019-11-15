@@ -1,0 +1,10 @@
+systems:
+  ros1: {type: ros1}
+  ros2: {type: ros2}
+
+routes:
+  ros1_to_ros2: { from: ros1, to: ros2 }
+  ros2_to_ros1: { from: ros2, to: ros1 }
+
+topics:
+  mir_fleet_manager/waypoint_goal: { type: "geometry_msgs/PoseStamped", route: ros2_to_ros1 }
