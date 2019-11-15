@@ -4,3 +4,7 @@ install
 
 # vscode
 .vscode
+
+# pycache files
+__pycache__/
+*.pyc
