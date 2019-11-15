@@ -1,6 +1,3 @@
-[submodule "ros1/src/mir_robot"]
-	path = ros1/src/mir_robot
-	url = https://github.com/dfki-ric/mir_robot.git
 [submodule "external/src/traffic-editor"]
 	path = external/src/traffic-editor
 	url = git@github.com:osrf/traffic-editor.git
@@ -10,3 +7,6 @@
 [submodule "ros2/src/rmf_core"]
 	path = ros2/src/rmf_core
 	url = git@github.com:osrf/rmf_core.git
+[submodule "ros1/src/mir_minimal_example/mir_robot"]
+	path = ros1/src/mir_minimal_example/mir_robot
+	url = git@github.com:dfki-ric/mir_robot.git
