@@ -9,4 +9,4 @@
 	url = git@github.com:cnboonhan94/rmf_map_to_graph.git
 [submodule "ros2/src/rmf_core"]
 	path = ros2/src/rmf_core
-	url = git@github.com:cnboonhan94/rmf_core.git
+	url = git@github.com:osrf/rmf_core.git
