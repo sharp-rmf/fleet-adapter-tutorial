@@ -4,9 +4,9 @@ PROJECT_HOME=$(pwd) #TODO: Change to export from config file
 ROS2_SETUP=/opt/ros/dashing/setup.bash
 
 if [[ $1 == clear ]] ; then
-    rm -r ros1/build
-    rm -r ros1/install
-    rm -r ros1/log
+    rm -r ros2/build
+    rm -r ros2/install
+    rm -r ros2/log
 fi
 
 source $ROS2_SETUP

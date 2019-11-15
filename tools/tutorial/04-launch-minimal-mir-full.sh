@@ -6,5 +6,11 @@ ROS1_SETUP=/opt/ros/melodic/setup.bash
 
 source $ROS1_SETUP
 source $MIR_EXAMPLE_INIT
-gnome-terminal -- bash -c "$PROJECT_HOME/tools/soss.sh"
 gnome-terminal -- bash -c "roslaunch mir_fleet_manager fleet_manager.launch"
+
+gnome-terminal -- bash -c "$PROJECT_HOME/tools/soss.sh"
+
+gnome-terminal -- bash -c "$PROJECT_HOME/tools/rmf_schedule.sh"
+
+gnome-terminal -- bash -c "$PROJECT_HOME/tools/rmf_mir_fleet_adapter.sh mir maze"
+

@@ -10,8 +10,8 @@
 
     <!-- Load AMCL for localization -->
     <include file="$(find mir_navigation)/launch/amcl.launch">
-        <arg name="initial_pose_x" value="10.0"/>
-        <arg name="initial_pose_y" value="10.0"/>
+        <arg name="initial_pose_x" value="0.0"/>
+        <arg name="initial_pose_y" value="0.0"/>
     </include>
 
     <!-- Launch planner for navigation -->

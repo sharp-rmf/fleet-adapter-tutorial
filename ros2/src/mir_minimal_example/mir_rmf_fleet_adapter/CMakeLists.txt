@@ -26,9 +26,9 @@ find_package(yaml-cpp REQUIRED)
 
 include(GNUInstallDirs)
 
-add_executable(start_fleet_adapter src/start_fleet_adapter.cpp src/FleetAdapterNode.cpp src/ParseGraph.cpp)
+add_executable(fleet_adapter src/fleet_adapter.cpp src/FleetAdapterNode.cpp src/ParseGraph.cpp)
 
-target_link_libraries(start_fleet_adapter
+target_link_libraries(fleet_adapter
   PUBLIC
     rmf_traffic::rmf_traffic
     rmf_traffic_ros2::rmf_traffic_ros2
@@ -36,7 +36,7 @@ target_link_libraries(start_fleet_adapter
     ${rclcpp_LIBRARIES}
 )
 
-target_include_directories(start_fleet_adapter
+target_include_directories(fleet_adapter
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
@@ -49,8 +49,8 @@ install(
 )
 
 install(
-  TARGETS start_fleet_adapter
-  EXPORT  start_fleet_adapter
+  TARGETS fleet_adapter
+  EXPORT  fleet_adapter
   # RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   RUNTIME DESTINATION lib/${PROJECT_NAME}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
