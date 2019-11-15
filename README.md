@@ -1,7 +1,8 @@
 # Fleet Adapter Transformation Space ( FATS )
-Run these!
+Run these! Change "A" to anything from A to H.
 ```
-git clone --recursive https://github.com/cnboonhan94/fleet-adapter-tutorial
+git clone --recursive git@github.com:cnboonhan94/fleet-adapter-tutorial.git
+cd fleet-adapter-tutorial
 tools/build_scripts/build_all.sh
 tools/tutorial/04-launch-minimal-mir-full.sh
 ros2 topic pub -1 /mir_fleet_manager/waypoint_goal std_msgs/String "data: A"
