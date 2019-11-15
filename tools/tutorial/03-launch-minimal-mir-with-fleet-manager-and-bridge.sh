@@ -6,5 +6,5 @@ ROS1_SETUP=/opt/ros/melodic/setup.bash
 
 source $ROS1_SETUP
 source $MIR_EXAMPLE_INIT
-roslaunch mir_fleet_manager fleet_manager.launch &
-$PROJECT_HOME/tools/soss.sh  
+# gnome-terminal -- bash -c "$PROJECT_HOME/tools/soss.sh"
+roslaunch mir_fleet_manager fleet_manager.launch

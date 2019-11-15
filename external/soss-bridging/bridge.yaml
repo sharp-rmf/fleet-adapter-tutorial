@@ -7,4 +7,10 @@ routes:
   ros2_to_ros1: { from: ros2, to: ros1 }
 
 topics:
-  mir_fleet_manager/waypoint_goal: { type: "geometry_msgs/PoseStamped", route: ros2_to_ros1 }
+  mir_fleet_manager/waypoint_goal: 
+    type: "geometry_msgs/PoseStamped"
+    route: ros2_to_ros1
+  
+  mir_fleet_manager/robot_pose: 
+    type: "geometry_msgs/PoseStamped"
+    route: ros1_to_ros2

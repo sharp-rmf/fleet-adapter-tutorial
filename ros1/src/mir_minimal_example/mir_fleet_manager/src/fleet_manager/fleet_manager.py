@@ -6,12 +6,15 @@ import actionlib
 import queue
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from geometry_msgs.msg import PoseStamped, PoseArray, PointStamped
+from nav_msgs.msg import Odometry
 import time
 
 
 # Define configuration variables here
 MAX_QUEUE_SIZE = 20  # Number of waypoints to store
 waypoint_topic = "/mir_fleet_manager/waypoint_goal"
+base_pose_topic = "base_pose_ground_truth"
+position_topic = "/mir_fleet_manager/robot_pose"
 cancel_topic = "/mir_fleet_manager/reset"
 viz_topic = "mir_fleet_manager/waypoints"
 frame_id = "map"
@@ -46,6 +49,17 @@ def wait_for_reset(viz_publisher):
             clear(viz_publisher)
             update_viz(viz_publisher)
             time.sleep(0.5)
+
+def wait_for_pose_update(pose_publisher):
+    # Function to get move_to_waypoint messages
+    global waypoints
+    while True:
+        data = rospy.wait_for_message(base_pose_topic, Odometry)
+        if data:
+            pose = PoseStamped()
+            pose.header = data.header
+            pose.pose = data.pose.pose
+            pose_publisher.publish(pose)
 
 
 def clear(viz_publisher):
@@ -96,6 +110,9 @@ def main():
     # Visualizer for markers
     viz_publisher = rospy.Publisher(viz_topic, PoseArray, queue_size=20)
 
+    # Subscriber for robot base pose
+    pose_publisher = rospy.Publisher(position_topic, PoseStamped, queue_size=20)
+
     # Create interface for accepting new waypoints as part of a plan
     waypoint_thread = threading.Thread(
         target=lambda: wait_for_waypoint(viz_publisher))
@@ -107,6 +124,11 @@ def main():
     reset_thread = threading.Thread(
         target=lambda: wait_for_reset(viz_publisher))
     reset_thread.start()
+
+     # Listen for pose updates
+    pose_thread = threading.Thread(
+        target=lambda: wait_for_pose_update(pose_publisher))
+    pose_thread.start()
 
     while not rospy.is_shutdown():
         update_viz(viz_publisher)

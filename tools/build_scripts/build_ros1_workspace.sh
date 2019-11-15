@@ -12,4 +12,5 @@ fi
 source $ROS1_SETUP
 cd ros1
 colcon build
+source install/setup.bash
 cd $PROJECT_HOME
