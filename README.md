@@ -1,7 +1,20 @@
-# Fleet Adapter Transformation Space ( FATS )
-Run these! Change "A" to anything from A to H.
+# Fleet Adapter Transformation Space ( FATS ) 
+`git clone --recursive git@github.com:cnboonhan94/fleet-adapter-tutorial.git`
+
+## One time: Install dependencies for mir simulation:
+
 ```
-git clone --recursive git@github.com:cnboonhan94/fleet-adapter-tutorial.git
+cd fleet-adapter-tutorial/ros1/src/mir_minimal_example/mir_robot
+sudo apt-get update -qq
+sudo apt-get install -qq -y python-rosdep
+sudo rosdep init
+rosdep update
+rosdep install --from-paths ./ -i -y --rosdistro melodic
+
+```
+## Build and Run
+Run these! Change "A" to anything from A to H. From the root project folder:
+```
 cd fleet-adapter-tutorial
 tools/build_scripts/build_all.sh
 tools/tutorial/04-launch-minimal-mir-full.sh
