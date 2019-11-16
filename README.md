@@ -1,5 +1,6 @@
 # Fleet Adapter Transformation Space ( FATS ) 
 `git clone --recursive git@github.com:cnboonhan94/fleet-adapter-tutorial.git`
+Need ROS1 Melodic and ROS2 Dashing.
 
 ## One time: Install dependencies for mir simulation:
 
