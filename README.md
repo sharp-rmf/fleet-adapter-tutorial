@@ -30,5 +30,5 @@ Then open project -> `maps/maze/maze.yaml`
 
 To generate a nav map from traffic-editor yaml:
 ```
-tools/traffic-editor generate_nav_map maze
+tools/traffic-editor/generate_nav_map maze
 ```
